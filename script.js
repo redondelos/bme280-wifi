@@ -2,7 +2,7 @@ console.log("Hello ESP 32!");
 
 document.getElementById("message").textContent = "JS is running!";
 
-const ESP32 = "http://192.168.10.3";
+const ESP32 = "http://192.168.1.10";
 
 function updateSensor()
 {

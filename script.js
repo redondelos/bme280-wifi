@@ -6,7 +6,9 @@ const ESP32 = "http://192.168.1.77";
 
 function updateSensor()
 {
-    fetch(ESP32 + "/bme280")
+    fetch(ESP32 + "/bme280", {
+        targetAddressSpace: "local"
+    })
     .then(response => response.json())
     .then(data => {
         console.log(data);

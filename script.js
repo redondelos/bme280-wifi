@@ -1,6 +1,11 @@
 console.log("Hello ESP 32!");
 
+
+const message = document.getElementById("message");
+
+if (message) {
 document.getElementById("message").textContent = "JS is running!";
+}
 
 const ESP32 = "http://172.20.10.3";
 

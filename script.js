@@ -7,7 +7,7 @@ if (message) {
 document.getElementById("message").textContent = "JS is running!";
 }
 
-const ESP32 = "http://172.20.10.3";
+const ESP32 = "http://192.168.1.10";
 
 const ledOn = document.getElementById("ledOn");
 const ledOff = document.getElementById("ledOff");

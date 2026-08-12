@@ -55,7 +55,7 @@ function updateLedStatus()
 };
 
 if (ledOn) {
-        addEventListener("click", function()
+        ledOn.addEventListener("click", function()
         {
             fetch(ESP32 + "/led/on")
                 .then(() => updateLedStatus());
@@ -63,7 +63,7 @@ if (ledOn) {
     }
        
 if (ledOff) {
-        addEventListener("click", function()
+        ledOff.addEventListener("click", function()
         {
             fetch(ESP32 + "/led/off")
                 .then(() => updateLedStatus());

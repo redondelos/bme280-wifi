@@ -11,9 +11,12 @@ function updateSensor()
     .then(data => {
         console.log(data);
 
-        document.getElementById("temperature").textContent = data.temperature + " ºC";
-        document.getElementById("pressure").textContent = data.pressure + " mmHg";
-        document.getElementById("humidity").textContent = data.humidity + " %";
+        document.getElementById("temperature").textContent = data.temperature;
+        document.getElementById("unit-temperature").textContent = "ºC";
+        document.getElementById("humidity").textContent = data.humidity;
+        document.getElementById("unit-humidity").textContent = "%";
+        document.getElementById("pressure").textContent = data.pressure;
+        document.getElementById("unit-pressure").textContent = "mmHg";
 
     })
     .catch(error => {

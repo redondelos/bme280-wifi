@@ -1,71 +1,100 @@
 html {
     font-family: "Roboto", sans-serif;
     font-size: 62.5%;
+    font-size: 36px;
+    color: var(--font-color);
 }
+
+:root {
+    --font-color: #05668DFF;
+    --button-font-color: #F0F3BDFF;
+}
+
+body {
+    margin-left: 31px;
+    margin-right: 31px;
+    background-color: var(--button-font-color);
+}
+
+/* Text */
 
 h1 {
-    text-align: center;
-    margin-bottom: 10px;
+    font-size: 36px;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 1px;
+.location {
+    font-family: "Roboto Condensed", sans-serif;
 }
 
+.bold-text {
+    font-weight: 800;
+}
+
+.normal-text {
+    font-weight: 400;
+}
+
+/* Buttons */
 .buttons {
-    display: grid;
-    grid-template-rows: 100px;
-    grid-template-columns: 80px 80px;
-    grid-template-rows: 50px;
-    column-gap: 25px;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 0;
-    margin-bottom: 0;
+    justify-content: space-between;
 }
 
 .btn {
-    font-size: large;
-    border: 0;
-    padding: 1.4rem 2rem;
-    border-radius: 5px;
-    outline: 0;
+    width: 135px;
+    height: 37px;
+    background-color: #028090FF;
+    color: var(--button-font-color);
+    border-radius: 20px;
+    border: none;
     cursor: pointer;
 }
 
-.btn-off {
-    background-color: #0d6efd;
-    color: #fff;
+.btn:hover {
+    background-color: #02C39A;
 }
 
-.btn-on {
-    background-color: #ff0000;
-    color: #fff;
+.btn:active {
+    transform: scale(0.9);
 }
 
-.led {
-    width: 50px;
-    height: 50px;
-    border: solid black;
+/* Data */
+.data {
+    font-family: "Roboto Condensed", sans-serif;
+    display: grid;
+    grid-template-columns: auto 0.7fr;
+    grid-template-rows: 0.5fr 1fr;
+    /* gap: 10px; */
+    background-color: #00A896;
+    color: var(--button-font-color);
+    height: 150px;
+    border-radius: 20px;
+    margin-bottom: 23px;
+    box-shadow: 5px 5px 5px #028090;
 }
 
-.indicators {
+.parameter {
     display: flex;
-    width: 100%;
     justify-content: center;
     align-items: center;
+    grid-column: span 2;
+    font-size: 24px;
 }
 
-.data-table, th, td {
-    border: 1px solid;
-    font-size: large;
+.value, .unit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0px 5px 5px;
+    font-size: 72px;
 }
 
-.title {
-    font-weight: bold;
+.unit {
+    display: flex;
+    justify-content: center;
 }
 
-th, td {
-    padding: 10px;
+.pressure {
+    font-size: 24px;
 }

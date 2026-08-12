@@ -27,36 +27,36 @@ function updateSensor()
 };
 
 
-function updateLedStatus()
-{
-    fetch(ESP32 + "/led/status")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
+// function updateLedStatus()
+// {
+//     fetch(ESP32 + "/led/status")
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data);
         
-        if (data.LED)
-            {
-                document.getElementById("ledStatus").textContent = "ON";
-            } 
-            else
-                {
-                    document.getElementById("ledStatus").textContent = "OFF";
-                }
-            });
-};
+//         if (data.LED)
+//             {
+//                 document.getElementById("ledStatus").textContent = "ON";
+//             } 
+//             else
+//                 {
+//                     document.getElementById("ledStatus").textContent = "OFF";
+//                 }
+//             });
+// };
 
-document.getElementById("ledOn").addEventListener("click", function()
-        {
-            fetch(ESP32 + "/led/on")
-                .then(() => updateLedStatus());
-        });
+// document.getElementById("ledOn").addEventListener("click", function()
+//         {
+//             fetch(ESP32 + "/led/on")
+//                 .then(() => updateLedStatus());
+//         });
         
-document.getElementById("ledOff").addEventListener("click", function()
-        {
-            fetch(ESP32 + "/led/off")
-                .then(() => updateLedStatus());
-        });
+// document.getElementById("ledOff").addEventListener("click", function()
+//         {
+//             fetch(ESP32 + "/led/off")
+//                 .then(() => updateLedStatus());
+//         });
 
-updateLedStatus();
+// updateLedStatus();
 updateSensor();
 setInterval(updateSensor, 1000);

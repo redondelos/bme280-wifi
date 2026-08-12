@@ -4,6 +4,10 @@ document.getElementById("message").textContent = "JS is running!";
 
 const ESP32 = "http://172.20.10.3";
 
+const ledOn = document.getElementById("ledOn");
+const ledOff = document.getElementById("ledOff");
+const ledStatus = document.getElementById("ledStatus");
+
 function updateSensor()
 {
     fetch(ESP32 + "/bme280")
@@ -45,17 +49,21 @@ function updateLedStatus()
             });
 };
 
-document.getElementById("ledOn").addEventListener("click", function()
+if (ledOn) {
+        addEventListener("click", function()
         {
             fetch(ESP32 + "/led/on")
                 .then(() => updateLedStatus());
         });
-        
-document.getElementById("ledOff").addEventListener("click", function()
+    }
+       
+if (ledOff) {
+        addEventListener("click", function()
         {
             fetch(ESP32 + "/led/off")
                 .then(() => updateLedStatus());
         });
+    }
 
 updateLedStatus();
 updateSensor();

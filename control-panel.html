@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BME280 Sensor</title>
+    <title>Control Panel</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,26 +29,25 @@
       <span class="normal-text">City, Country</span>
     </p>
 
-    <div class="data">
-      <div class="parameter">Temperature</div>
-      <div id="temperature" class="value">Value</div>
-      <div id="unit-temperature" class="unit">Unit</div>
+    <h2>MODE</h2>
+    <div class="buttons control-buttons">
+      <button class="btn btn-led on">AUTO</button>
+      <div class="status">AUTO</div>
+      <button class="btn btn-led off">MANUAL</button>
     </div>
 
-    <div class="data">
-      <div class="parameter">Atmospheric Pressure</div>
-      <div id="pressure" class="value">Value</div>
-      <div id="unit-pressure" class="unit pressure">Unit</div>
+    <h2>LED 1</h2>
+    <div class="buttons control-buttons">
+      <button id="ledOn" class="btn btn-led on">ON</button>
+      <div id="ledStatus" class="status">ON</div>
+      <button id="ledOff" class="btn btn-led off">OFF</button>
     </div>
-
-    <div class="data">
-      <div class="parameter">Relative Humidity</div>
-      <div id="humidity" class="value">Value</div>
-      <div id="unit-humidity" class="unit">Unit</div>
+    <h2>RELAY 1</h2>
+    <div class="buttons control-buttons">
+      <button class="btn btn-led on">ON</button>
+      <div class="status">ON</div>
+      <button class="btn btn-led off">OFF</button>
     </div>
-
-    <h2>Message</h2>
-    <p id="message">Status</p>
 
     <script src="script.js"></script>
   </body>

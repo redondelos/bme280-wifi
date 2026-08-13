@@ -40,13 +40,19 @@
     <div class="controls control-cards-layout">
       <div class="control-buttons device-control-card">
         <span class="element-name device-control-card__title">MODE</span>
-        <button class="btn btn-led ui-button ui-button--toggle on state-on">
+        <button
+          id="modeAuto"
+          class="btn btn-led ui-button ui-button--toggle on state-on"
+        >
           AUTO
         </button>
-        <button class="btn btn-led ui-button ui-button--toggle off state-off">
+        <button
+          id="modeManual"
+          class="btn btn-led ui-button ui-button--toggle off state-off"
+        >
           MANUAL
         </button>
-        <div class="status device-control-status">STATUS</div>
+        <div id="modeStatus" class="status device-control-status">STATUS</div>
       </div>
 
       <div class="control-buttons device-control-card">
@@ -67,7 +73,7 @@
       </div>
 
       <div class="control-buttons device-control-card">
-        <span class="element-name device-control-card__title">RELAY 1</span>
+        <span class="element-name device-control-card__title">LED 2</span>
         <button class="btn btn-led ui-button ui-button--toggle on state-on">
           ON
         </button>

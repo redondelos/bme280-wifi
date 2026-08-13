@@ -25,8 +25,12 @@ h1, h2 {
 
 h2,
 .section-title {
-    text-align: center;
+    text-align: left;
     margin-bottom: 1rem;
+}
+
+.status-message {
+    font-size: 3.6rem;
 }
 
 .location-mobile,

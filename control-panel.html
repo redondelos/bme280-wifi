@@ -12,41 +12,70 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <h1>BME280 <span class="normal-text">Sensor</span></h1>
+  <body class="layout-page">
+    <h1 class="sensor-page-title">
+      BME280 <span class="normal-text sensor-page-title__accent">Sensor</span>
+    </h1>
 
-    <div class="buttons">
-      <button class="btn btn-primary">
+    <p class="location-mobile location-text location-text--mobile">
+      <span class="bold-text location-text__label">Location: </span>
+      <span class="normal-text location-text__value">City, CT</span>
+    </p>
+
+    <div class="buttons mode-navigation">
+      <button class="btn btn-primary ui-button ui-button--primary read-only">
         <a href="index.html">Read-Only Mode</a>
       </button>
-      <button class="btn btn-primary">
+      <p class="location-web location-text location-text--desktop">
+        <span class="bold-text location-text__label">Location: </span>
+        <span class="normal-text location-text__value">City, CT</span>
+      </p>
+      <button
+        class="btn btn-primary ui-button ui-button--primary control-panel"
+      >
         <a href="control-panel.html">Control Panel</a>
       </button>
     </div>
 
-    <p class="location">
-      <span class="bold-text">Location: </span>
-      <span class="normal-text">City, Country</span>
-    </p>
+    <div class="controls control-cards-layout">
+      <div class="control-buttons device-control-card">
+        <span class="element-name device-control-card__title">MODE</span>
+        <button class="btn btn-led ui-button ui-button--toggle on state-on">
+          AUTO
+        </button>
+        <button class="btn btn-led ui-button ui-button--toggle off state-off">
+          MANUAL
+        </button>
+        <div class="status device-control-status">STATUS</div>
+      </div>
 
-    <h2>MODE</h2>
-    <div class="buttons control-buttons">
-      <button class="btn btn-led on">AUTO</button>
-      <div class="status">AUTO</div>
-      <button class="btn btn-led off">MANUAL</button>
-    </div>
+      <div class="control-buttons device-control-card">
+        <span class="element-name device-control-card__title">LED 1</span>
+        <button
+          id="ledOn"
+          class="btn btn-led ui-button ui-button--toggle on state-on"
+        >
+          ON
+        </button>
+        <button
+          id="ledOff"
+          class="btn btn-led ui-button ui-button--toggle off state-off"
+        >
+          OFF
+        </button>
+        <div id="ledStatus" class="status device-control-status">STATUS</div>
+      </div>
 
-    <h2>LED 1</h2>
-    <div class="buttons control-buttons">
-      <button id="ledOn" class="btn btn-led on">ON</button>
-      <div id="ledStatus" class="status">ON</div>
-      <button id="ledOff" class="btn btn-led off">OFF</button>
-    </div>
-    <h2>RELAY 1</h2>
-    <div class="buttons control-buttons">
-      <button class="btn btn-led on">ON</button>
-      <div class="status">ON</div>
-      <button class="btn btn-led off">OFF</button>
+      <div class="control-buttons device-control-card">
+        <span class="element-name device-control-card__title">RELAY 1</span>
+        <button class="btn btn-led ui-button ui-button--toggle on state-on">
+          ON
+        </button>
+        <button class="btn btn-led ui-button ui-button--toggle off state-off">
+          OFF
+        </button>
+        <div class="status device-control-status">STATUS</div>
+      </div>
     </div>
 
     <script src="script.js"></script>

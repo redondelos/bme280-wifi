@@ -1,7 +1,6 @@
 html {
     font-family: "Roboto", sans-serif;
     font-size: 62.5%;
-    font-size: 36px;
     color: var(--font-color);
 }
 
@@ -10,112 +9,143 @@ html {
     --button-font-color: #F0F3BDFF;
 }
 
-body {
-    margin-left: 31px;
-    margin-right: 31px;
+/* Layout: page container */
+body,
+.layout-page {
+    margin-left: 3.1rem;
+    margin-right: 3.1rem;
     background-color: var(--button-font-color);
 }
 
 /* Text */
 
 h1, h2 {
-    font-size: 36px;
+    font-size: 3.6rem;
 }
 
-h2 {
+h2,
+.section-title {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
-.location {
+.location-mobile,
+.location-text--mobile {
     font-family: "Roboto Condensed", sans-serif;
 }
 
-.bold-text {
+.location-web,
+.location-text--desktop {
+    display: none;
+}
+
+.bold-text,
+.location-text__label {
+    font-size: 2.4rem;
     font-weight: 800;
 }
 
-.normal-text {
+.normal-text,
+.location-text__value,
+.sensor-page-title__accent {
+    font-size: 2.4rem;
     font-weight: 400;
 }
 
+@media screen and (min-width: 1100px) {
+    h1, h2 {
+        font-size: 4.8rem;
+    }
+
+    .normal-text, .bold-text,
+    .location-text__value, .location-text__label {
+        font-size: 4.8rem;
+    }
+
+    .location-web,
+    .location-text--desktop {
+        display: block;
+    }
+
+    .location-mobile,
+    .location-text--mobile {
+        display: none;
+    }
+}
+
 /* Buttons */
-.buttons {
+/* Layout: top mode navigation */
+.buttons,
+.mode-navigation {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 2.1rem 0 2.1rem 0;
 }
 
-.btn {
-    border-radius: 20px;
+/* Object: reusable button structure */
+.btn,
+.ui-button {
+    border-radius: 2rem;
     cursor: pointer;
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 18px;
-    height: 50px;
-    width: 135px;
+    font-size: 1.8rem;
+    height: 5rem;
+    width: 13.5rem;
     border: none;
 }
 
-.btn-primary {
+/* Skin: primary button look */
+.btn-primary,
+.ui-button--primary {
     background-color: #028090FF;
     color: var(--button-font-color);
-    
 }
 
-.control-buttons {
-    display: grid;
-    grid-template-columns: auto 0.7fr;
-    grid-template-rows: 1fr 1fr;
-    border: solid var(--font-color);
-    border-radius: 20px;
-    box-shadow: 5px 5px 5px #028090;
-}
-
-.btn-led {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--button-font-color);
-    margin: 5px 0 5px 5px;
-}
-
-.on {
-    background-color: #00A896;
-}
-
-.off {
-    background-color: #028090;
-}
-
-.on:hover, 
-.off:hover {
+.btn-primary:hover,
+.ui-button--primary:hover {
     background-color: #02C39A;
 }
 
-.status, .element-name {
-    display: flex;
-    grid-row: span 2;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    color: #02C39A
-}
-
-.btn-primary:hover {
-    background-color: #02C39A;
-}
-
-.btn:active {
+.btn:active,
+.ui-button:active {
     transform: scale(0.9);
 }
 
-/* Data */
-.data {
+@media screen and (min-width: 1100px) {
+    .buttons,
+    .mode-navigation {
+        margin-bottom: 5rem;
+    }
+
+    .btn,
+    .ui-button {
+        font-size: 4.8rem;
+        border-radius: 40px;
+    }
+
+    .btn-primary,
+    .ui-button--primary {
+        width: 35rem;
+        height: 13rem;
+    }
+}
+
+/* Sensor Data */
+/* Layout: sensor cards */
+.data-indicators,
+.sensor-cards-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Component: sensor metric card */
+.data,
+.sensor-metric-card {
     font-family: "Roboto Condensed", sans-serif;
     display: grid;
     grid-template-columns: auto 0.7fr;
     grid-template-rows: 0.5fr 1fr;
-    /* gap: 10px; */
     background-color: #00A896;
     color: var(--button-font-color);
     height: 150px;
@@ -124,29 +154,64 @@ h2 {
     box-shadow: 5px 5px 5px #028090;
 }
 
-.parameter {
+.parameter,
+.sensor-metric-card__label {
     display: flex;
     justify-content: center;
     align-items: center;
     grid-column: span 2;
-    font-size: 24px;
+    font-size: 2.4rem;
 }
 
-.value, .unit {
+.value, .unit,
+.sensor-metric-card__value, .sensor-metric-card__unit {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 0px 5px 5px;
-    font-size: 72px;
+    font-size: 7.2rem;
 }
 
-.unit {
+.unit,
+.sensor-metric-card__unit {
     display: flex;
     justify-content: center;
 }
 
-.pressure {
-    font-size: 24px;
+.pressure,
+.sensor-metric-card__unit--pressure {
+    font-size: 2.4rem;
+}
+
+@media screen and (min-width: 1100px) {
+    .data-indicators,
+    .sensor-cards-layout {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 3.9rem;
+    }
+
+    .data,
+    .sensor-metric-card {
+        width: 37.5rem;
+        height: 20rem;
+        border-radius: 40px;
+    }
+
+    .parameter,
+    .sensor-metric-card__label {
+        font-size: 3.6rem;
+    }
+
+    .pressure,
+    .sensor-metric-card__unit--pressure {
+        font-size: 3.6rem;
+    }
+
+    .value, .unit,
+    .sensor-metric-card__value, .sensor-metric-card__unit {
+        padding: 0 0 5px 5px;
+    }
 }
 
 /* Anchors */
@@ -155,17 +220,78 @@ a {
     color: var(--button-font-color);
 }
 
+/* Controls */
+/* Layout: control cards group */
+.controls,
+.control-cards-layout {
+    display: flex;
+    flex-direction: column;
+}
 
+/* Component: device control card */
+.control-buttons,
+.device-control-card {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    border: solid var(--font-color);
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #028090;
+    place-items: center;
+}
 
+/* Skin: toggle button for ON/OFF controls */
+.btn-led,
+.ui-button--toggle {
+    width: 18rem;
+    height: 6rem;
+    font-size: 3.6rem;
+    color: var(--button-font-color);
+    margin: 5px 0 5px 5px;
+}
 
+/* State */
+.on,
+.state-on {
+    background-color: #00A896;
+}
 
+.off,
+.state-off {
+    background-color: #028090;
+}
 
+.on:hover, 
+.off:hover,
+.state-on:hover,
+.state-off:hover {
+    background-color: #02C39A;
+}
 
+.element-name, .status,
+.device-control-card__title, .device-control-status {
+    font-size: 3.6rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.status,
+.device-control-status {
+    color: #02C39A;
+}
 
+@media screen and (min-width: 1100px) {
+    .controls,
+    .control-cards-layout {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
-
-
-
-
-
+    .control-buttons,
+    .device-control-card {
+        width: 37.5rem;
+        height: 33.6rem;
+    }
+}

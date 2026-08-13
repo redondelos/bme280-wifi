@@ -2,6 +2,8 @@ console.log("Hello ESP 32!");
 
 
 const message = document.getElementById("message");
+const modeAuto = document.getElementById("modeAuto");
+const modeManual = document.getElementById("modeManual");
 
 if (message) {
 document.getElementById("message").textContent = "JS is running!";
@@ -30,8 +32,10 @@ function updateSensor()
     })
     .catch(error => {
             console.error("BME280 fetch error:", error);
+            if (message) {
             document.getElementById("message").textContent =
                 "Error fetching ESP32";
+            }
         }); 
 };
 
@@ -70,6 +74,44 @@ if (ledOff) {
         });
     }
 
+function updateModeStatus()
+{
+    fetch(ESP32 + "/mode/status")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            
+            if (data.MODE)
+                {
+                    document.getElementById("modeStatus").textContent = "AUTO";
+                } 
+                else
+                    {
+                        document.getElementById("modeStatus").textContent = "MANUAL";
+                    }
+                });
+
+};
+
+if (modeAuto) {
+        modeAuto.addEventListener("click", function()
+        {
+            fetch(ESP32 + "/mode/auto")
+                .then(() => updateModeStatus());
+        });
+
+    }
+
+if (modeManual) {
+        modeManual.addEventListener("click", function()
+        {
+            fetch(ESP32 + "/mode/manual")
+                .then(() => updateModeStatus());
+        });
+
+    }
+
 updateLedStatus();
 updateSensor();
+updateModeStatus();
 setInterval(updateSensor, 1000);

@@ -9,7 +9,8 @@ if (message) {
 document.getElementById("message").textContent = "JS is running!";
 }
 
-const ESP32 = "http://192.168.1.10";
+// const ESP32 = "http://192.168.1.10";
+const ESP32 = "http://172.20.10.2";
 
 const ledOn = document.getElementById("ledOn");
 const ledOff = document.getElementById("ledOff");
@@ -22,7 +23,7 @@ const ledStatus_2 = document.getElementById("ledStatus_2");
 
 function updateSensor()
 {
-    fetch(ESP32 + "/bme280")
+    fetch("/bme280")
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -47,7 +48,7 @@ function updateSensor()
 
 function updateLedStatus()
 {
-    fetch(ESP32 + "/led/status")
+    fetch("/led/status")
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -66,7 +67,7 @@ function updateLedStatus()
 if (ledOn) {
         ledOn.addEventListener("click", function()
         {
-            fetch(ESP32 + "/led/on")
+            fetch("/led/on")
                 .then(() => updateLedStatus());
         });
     }
@@ -74,14 +75,14 @@ if (ledOn) {
 if (ledOff) {
         ledOff.addEventListener("click", function()
         {
-            fetch(ESP32 + "/led/off")
+            fetch("/led/off")
                 .then(() => updateLedStatus());
         });
     }
 
 function updateModeStatus()
 {
-    fetch(ESP32 + "/mode/status")
+    fetch("/mode/status")
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -101,7 +102,7 @@ function updateModeStatus()
 if (modeAuto) {
         modeAuto.addEventListener("click", function()
         {
-            fetch(ESP32 + "/mode/auto")
+            fetch("/mode/auto")
                 .then(() => updateModeStatus());
         });
 
@@ -110,7 +111,7 @@ if (modeAuto) {
 if (modeManual) {
         modeManual.addEventListener("click", function()
         {
-            fetch(ESP32 + "/mode/manual")
+            fetch("/mode/manual")
                 .then(() => updateModeStatus());
         });
 
@@ -118,7 +119,7 @@ if (modeManual) {
 
 function updateLedStatus_2()
 {
-    fetch(ESP32 + "/board-led/status")
+    fetch("/board-led/status")
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -137,7 +138,7 @@ function updateLedStatus_2()
 if (ledOn_2) {
         ledOn_2.addEventListener("click", function()
         {
-            fetch(ESP32 + "/board-led/on")
+            fetch("/board-led/on")
                 .then(() => updateLedStatus_2());
         });
     }
@@ -145,7 +146,7 @@ if (ledOn_2) {
 if (ledOff_2) {
         ledOff_2.addEventListener("click", function()
         {
-            fetch(ESP32 + "/board-led/off")
+            fetch("/board-led/off")
                 .then(() => updateLedStatus_2());
         });
     }

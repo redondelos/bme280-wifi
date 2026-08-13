@@ -15,6 +15,11 @@ const ledOn = document.getElementById("ledOn");
 const ledOff = document.getElementById("ledOff");
 const ledStatus = document.getElementById("ledStatus");
 
+const ledOn_2 = document.getElementById("ledOn_2");
+const ledOff_2 = document.getElementById("ledOff_2");
+const ledStatus_2 = document.getElementById("ledStatus_2");
+
+
 function updateSensor()
 {
     fetch(ESP32 + "/bme280")
@@ -111,7 +116,42 @@ if (modeManual) {
 
     }
 
+function updateLedStatus_2()
+{
+    fetch(ESP32 + "/board-led/status")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        
+        if (data.BOARD_LED)
+            {
+                document.getElementById("ledStatus_2").textContent = "ON";
+            } 
+            else
+                {
+                    document.getElementById("ledStatus_2").textContent = "OFF";
+                }
+            });
+};
+
+if (ledOn_2) {
+        ledOn_2.addEventListener("click", function()
+        {
+            fetch(ESP32 + "/board-led/on")
+                .then(() => updateLedStatus_2());
+        });
+    }
+       
+if (ledOff_2) {
+        ledOff_2.addEventListener("click", function()
+        {
+            fetch(ESP32 + "/board-led/off")
+                .then(() => updateLedStatus_2());
+        });
+    }
+
 updateLedStatus();
+updateLedStatus_2();
 updateSensor();
 updateModeStatus();
 setInterval(updateSensor, 1000);

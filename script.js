@@ -9,8 +9,9 @@ if (message) {
 document.getElementById("message").textContent = "JS is running!";
 }
 
-const ESP32 = "http://192.168.1.10";
+// const ESP32 = "http://192.168.1.10";
 // const ESP32 = "http://172.20.10.2";
+const API = "https://bme280-api.carlos-puente-r.workers.dev";
 
 const ledOn = document.getElementById("ledOn");
 const ledOff = document.getElementById("ledOff");
@@ -23,10 +24,10 @@ const ledStatus_2 = document.getElementById("ledStatus_2");
 
 function updateSensor()
 {
-    fetch(ESP32 + "/bme280")
+    fetch(API + "/api/sensor")
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        console.log("Cloud data", data);
 
         document.getElementById("temperature").textContent = data.temperature;
         document.getElementById("unit-temperature").textContent = "ºC";

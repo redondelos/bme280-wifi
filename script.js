@@ -175,4 +175,4 @@ async function updateSensor() {
 // updateLedStatus_2();
 updateSensor();
 // updateModeStatus();
-setInterval(updateSensor, 6000);
+setInterval(updateSensor, 5000);

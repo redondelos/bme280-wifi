@@ -152,8 +152,8 @@ function updateSensor()
 //         });
 //     }
 
-updateLedStatus();
-updateLedStatus_2();
+// updateLedStatus();
+// updateLedStatus_2();
 updateSensor();
-updateModeStatus();
+// updateModeStatus();
 setInterval(updateSensor, 1000);

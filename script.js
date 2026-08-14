@@ -22,29 +22,48 @@ const ledOff_2 = document.getElementById("ledOff_2");
 const ledStatus_2 = document.getElementById("ledStatus_2");
 
 
-function updateSensor()
-{
-    fetch(API + "/api/sensor")
-    .then(response => response.json())
-    .then(data => {
-        console.log("Cloud data", data);
+async function updateSensor() {
+  try {
+    const response = await fetch(`${API}/api/sensor`);
 
-        document.getElementById("temperature").textContent = data.temperature;
-        document.getElementById("unit-temperature").textContent = "ºC";
-        document.getElementById("humidity").textContent = data.humidity;
-        document.getElementById("unit-humidity").textContent = "%";
-        document.getElementById("pressure").textContent = data.pressure;
-        document.getElementById("unit-pressure").textContent = "mmHg";
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`);
+    }
 
-    })
-    .catch(error => {
-            console.error("BME280 fetch error:", error);
-            if (message) {
-            document.getElementById("message").textContent =
-                "Error fetching ESP32";
-            }
-        }); 
-};
+    const data = await response.json();
+
+    console.log("Latest cloud reading:", data);
+
+    document.getElementById("temperature").textContent =
+      Number(data.temperature).toFixed(2);
+
+    document.getElementById("unit-temperature").textContent = "°C";
+
+    document.getElementById("humidity").textContent =
+      Number(data.humidity).toFixed(2);
+
+    document.getElementById("unit-humidity").textContent = "%";
+
+    document.getElementById("pressure").textContent =
+      Number(data.pressure).toFixed(2);
+
+    document.getElementById("unit-pressure").textContent = "mmHg";
+
+    if (message) {
+      message.textContent = "Latest reading loaded.";
+    }
+  } catch (error) {
+    console.error("Cloud sensor fetch error:", error);
+
+    document.getElementById("temperature").textContent = "--";
+    document.getElementById("humidity").textContent = "--";
+    document.getElementById("pressure").textContent = "--";
+
+    if (message) {
+      message.textContent = "Could not load cloud sensor data.";
+    }
+  }
+}
 
 
 // function updateLedStatus()
@@ -156,4 +175,4 @@ function updateSensor()
 // updateLedStatus_2();
 updateSensor();
 // updateModeStatus();
-setInterval(updateSensor, 1000);
+setInterval(updateSensor, 6000);
